@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 The ZMK Contributors
+ * Copyright (c) 2021 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
  */
@@ -21,7 +21,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <125>;
             quick_tap_ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
@@ -35,6 +35,12 @@
             key-positions = <20 19>;
             bindings = <&kp SEMI>;
         };
+
+        combo_tab {
+           timeout-ms = <50>;
+           key-positions = <29 30>;
+           bindings = <&kp TAB>;
+       };
     };
 
     keymap {
@@ -56,7 +62,7 @@
 &kp Q       &kp W       &kp F       &kp P       &kp B       &kp J   &kp L       &kp U       &kp Y       &kp APOS
 &hm LGUI A  &hm LALT R  &hm LCTL S  &hm LSFT T  &kp G       &kp M   &hm RSFT N  &hm RCTL E  &hm LALT I  &hm RGUI O
 &kp Z       &kp X       &kp C       &kp D       &kp V       &kp K   &kp H       &kp COMMA   &kp DOT     &kp FSLH
-                 &lt LOWER TAB &lt RAISE ENTER  &lt NAV SPACE &mt LS(LC(LA(LGUI))) ESC
+                 &lt RAISE BSPC &lt LOWER ENTER  &lt NAV SPACE &mt LS(LC(LA(LGUI))) ESC
             >;
         };
 
@@ -77,14 +83,14 @@
 // |       |       |       |       |       | ----- |  ` ~  |  7 &  |  8 *  |  9 (  |  \ |  |
 // | LGUI  | LALT  | LCTL  | LSFT  |       | ----- |  - _  |  4 _  |  5 %  |  6 ^  |  ; :  |
 // |       |       |       |       |       | ----- |  = +  |  1 !  |  2 @  |  3 #  |  , <  |
-//                         |       |  ENT  | ----- |   0   |   .   |
+//                         |       |   .   | ----- |       |   .   |
 // NOTE: Consider "&tog LOWER" instead of "&kp GRAVE"
         lower_layer {
             bindings = <
 &none       &none       &none       &none       &none       &kp GRAVE   &kp N7  &kp N8  &kp N9  &kp BSLH
 &kp LGUI    &kp LALT    &kp LCTL    &kp LSFT    &kp CAPS    &kp MINUS   &kp N4  &kp N5  &kp N6  &kp SEMI
-&none       &none       &none       &none       &none       &kp EQUAL   &kp N1  &kp N2  &kp N3  &kp COMMA
-                                    &trans      &mo ADJUST  &kp N0  &kp DOT
+&none       &none       &none       &kp DOT       &none       &kp EQUAL   &kp N1  &kp N2  &kp N3  &kp COMMA
+                                    &trans      &mo ADJUST  &kp SPACE   &kp N0
             >;
         };
 
@@ -98,7 +104,7 @@
 &none       &none       &none       &none       &none       &kp TILDE   &kp LPAR  &kp RPAR  &none  &trans
 &kp LGUI    &kp LALT    &kp LCTL    &kp LSFT    &none       &kp UNDER   &kp LBKT  &kp RBKT  &none  &trans
 &none       &none       &none       &none       &none       &kp PLUS    &kp LBRC  &kp RBRC  &none  &trans
-                                    &mo ADJUST  &trans      &kp BSPC    &kp DEL
+                                    &mo ADJUST  &trans      &kp SPACE   &kp DEL
             >;
         };
 
