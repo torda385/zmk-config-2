@@ -1,6 +1,5 @@
 ```
 west build \
---pristine \
 -d build/left \
 -b nice_nano \
 -- \
@@ -14,7 +13,6 @@ cp $(pwd)/build/left/zephyr/zmk.uf2 /Volumes/NICENANO
 
 ```
 west build \
---pristine \
 -d build/right \
 -b nice_nano \
 -- \
